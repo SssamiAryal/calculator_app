@@ -38,6 +38,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
 
   String operation = '';
 
+  String formatResult(double value) {
+    if (value == value.toInt()) {
+      return value.toInt().toString();
+    }
+    return value.toString();
+  }
+
   void onButtonClick(String value) {
     setState(() {
       if (value == 'C') {
@@ -78,7 +85,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           result = firstNumber % secondNumber;
         }
 
-        display = result.toString();
+        display = formatResult(result);
       } else {
         if (display == '0') {
           display = value;
@@ -110,7 +117,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text("Calculator"),
+        title: const Text("Calculator App"),
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 104, 130, 142),
         foregroundColor: Colors.black,
